@@ -7,6 +7,7 @@ var expressValidator = require('express-validator');
 var session = require('express-session');
 var flash = require('connect-flash');
 var logger = require('morgan');
+var moment = require('moment');
 var multer = require('multer');
 var upload = multer({dest: './public/img'});
 

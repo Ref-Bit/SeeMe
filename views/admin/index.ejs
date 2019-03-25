@@ -1,0 +1,66 @@
+<% include ../partials/header.ejs %>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md bg-secondary text-uppercase" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="/">See ME</a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/add">Add Project</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <table class="table table-responsive-md">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Title</th>
+                <th scope="col">Service</th>
+                <th scope="col">Client</th>
+                <th scope="col">Created At</th>
+                <th scope="col">URL</th>
+                <th scope="col">Description</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% projects.forEach(function (project) { %>
+                <tr>
+                    <th scope="row"><%= project.id %></th>
+                    <td><img src="/img/portfolio/<%= project.image %>" alt="<%= project.image %>" class="img-thumbnail-sm"></td>
+                    <td><%= project.title %></td>
+                    <td><%= project.service %></td>
+                    <td><%= project.client %></td>
+                    <td><%= project.date %></td>
+                    <td><%= project.url %></td>
+                    <td><%= project.description.substring(0,45); %></td>
+                    <td>
+                        <a href="/admin/edit/<%= project.id %>" class="btn btn-info">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/admin/delete/<%= project.id %>" class="btn btn-danger" data-id="<%= project.id %>">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>

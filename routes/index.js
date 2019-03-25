@@ -1,11 +1,22 @@
 var express = require('express');
 var router = express.Router();
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'seeme'
+});
+connection.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {
-    title: 'See Me - Home Page',
-    name: 'Refaat Bitar'
+  connection.query("SELECT * FROM projects", function (err, rows, fields) {
+    if (err)throw err;
+    res.render('index', {
+      "projects": rows
+    });
   });
 });
 

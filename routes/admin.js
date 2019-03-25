@@ -12,6 +12,16 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
+/* GET Admin Index Page */
+router.get('/', function(req, res, next) {
+  connection.query("SELECT * FROM projects", function (err, rows, fields) {
+    if (err)throw err;
+    res.render('admin/index', {
+      "projects": rows
+    });
+  });
+});
+
 /* GET Add Project Page */
 router.get('/add', function(req, res, next) {
   res.render('admin/add');
