@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/add">Add Project</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/admin/add">Add Project</a>
                 </li>
             </ul>
         </div>
@@ -30,7 +30,6 @@
                 <th scope="col">Client</th>
                 <th scope="col">Created At</th>
                 <th scope="col">URL</th>
-                <th scope="col">Description</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
@@ -43,16 +42,15 @@
                     <td><%= project.title %></td>
                     <td><%= project.service %></td>
                     <td><%= project.client %></td>
-                    <td><%= project.date %></td>
+                    <td><%= moment(project.date).fromNow(); %></td>
                     <td><%= project.url %></td>
-                    <td><%= project.description.substring(0,45); %></td>
                     <td>
-                        <a href="/admin/edit/<%= project.id %>" class="btn btn-info">
+                        <a href="/admin/edit/<%=project.id%>" class="btn btn-info">
                             <i class="far fa-edit"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="/admin/delete/<%= project.id %>" class="btn btn-danger" data-id="<%= project.id %>">
+                        <a href="/admin/delete/<%=project.id%>" class="btn btn-danger delete-project" data-id="<%=project.id%>">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>

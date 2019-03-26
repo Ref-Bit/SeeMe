@@ -7,7 +7,6 @@ var expressValidator = require('express-validator');
 var session = require('express-session');
 var flash = require('connect-flash');
 var logger = require('morgan');
-var moment = require('moment');
 var multer = require('multer');
 var upload = multer({dest: './public/img'});
 
@@ -27,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.locals.moment = require('moment');
 
 //Handle Sessions
 app.use(session({

@@ -152,14 +152,14 @@
           <ul class="list-unstyled">
             <li><strong>Service Name: </strong><%= project.service %></li>
             <li><strong>Client Name: </strong><%= project.client %></li>
-            <li><strong>Created At: </strong> <%= project.date %></li>
+            <li><strong>Created At: </strong> <%= moment(project.date).fromNow(); %></li>
             <li><strong>Description: </strong></li>
           </ul>
           <p><%= project.description %></p>
           <a class="btn btn-danger btn-lg rounded-pill portfolio-modal-dismiss" href="#">
             <i class="fa fa-close"></i>
             Close Project</a>
-          <a href="/admin/add" class="btn btn-info btn-lg rounded-pill">View Project</a>
+          <a href="<%= project.url; %>" class="btn btn-info btn-lg rounded-pill">View Project</a>
         </div>
       </div>
     </div>
